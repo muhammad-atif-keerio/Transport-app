@@ -1,7 +1,6 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 import { z } from "zod";
 import prisma from "@/lib/prisma";
 import { getCurrentUser } from "@/lib/auth";
@@ -101,6 +100,7 @@ export type CreateDriverInput = z.infer<typeof createDriverSchema>;
 export type UpdateDriverInput = z.infer<typeof updateDriverSchema>;
 
 // Result types for better error handling
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ActionResult<T = any> = {
   success: boolean;
   data?: T;
