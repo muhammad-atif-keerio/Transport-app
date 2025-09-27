@@ -3578,6 +3578,7 @@ export namespace Prisma {
      * The data used to create many Drivers.
      */
     data: DriverCreateManyInput | DriverCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -3596,6 +3597,7 @@ export namespace Prisma {
      * The data used to create many Drivers.
      */
     data: DriverCreateManyInput | DriverCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -4904,6 +4906,7 @@ export namespace Prisma {
      * The data used to create many DriverWorkExperiences.
      */
     data: DriverWorkExperienceCreateManyInput | DriverWorkExperienceCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -4922,6 +4925,7 @@ export namespace Prisma {
      * The data used to create many DriverWorkExperiences.
      */
     data: DriverWorkExperienceCreateManyInput | DriverWorkExperienceCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -6012,6 +6016,7 @@ export namespace Prisma {
      * The data used to create many DriverReferences.
      */
     data: DriverReferenceCreateManyInput | DriverReferenceCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -6030,6 +6035,7 @@ export namespace Prisma {
      * The data used to create many DriverReferences.
      */
     data: DriverReferenceCreateManyInput | DriverReferenceCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -7159,6 +7165,7 @@ export namespace Prisma {
      * The data used to create many DriverDocuments.
      */
     data: DriverDocumentCreateManyInput | DriverDocumentCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -7177,6 +7184,7 @@ export namespace Prisma {
      * The data used to create many DriverDocuments.
      */
     data: DriverDocumentCreateManyInput | DriverDocumentCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -8331,6 +8339,7 @@ export namespace Prisma {
      * The data used to create many DriverViolations.
      */
     data: DriverViolationCreateManyInput | DriverViolationCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -8349,6 +8358,7 @@ export namespace Prisma {
      * The data used to create many DriverViolations.
      */
     data: DriverViolationCreateManyInput | DriverViolationCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -9452,6 +9462,7 @@ export namespace Prisma {
      * The data used to create many DriverAssignments.
      */
     data: DriverAssignmentCreateManyInput | DriverAssignmentCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -9470,6 +9481,7 @@ export namespace Prisma {
      * The data used to create many DriverAssignments.
      */
     data: DriverAssignmentCreateManyInput | DriverAssignmentCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -10586,6 +10598,7 @@ export namespace Prisma {
      * The data used to create many Users.
      */
     data: UserCreateManyInput | UserCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -10604,6 +10617,7 @@ export namespace Prisma {
      * The data used to create many Users.
      */
     data: UserCreateManyInput | UserCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -10814,6 +10828,9 @@ export namespace Prisma {
    */
 
   export const TransactionIsolationLevel: {
+    ReadUncommitted: 'ReadUncommitted',
+    ReadCommitted: 'ReadCommitted',
+    RepeatableRead: 'RepeatableRead',
     Serializable: 'Serializable'
   };
 
@@ -11014,6 +11031,14 @@ export namespace Prisma {
   export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
+  export const QueryMode: {
+    default: 'default',
+    insensitive: 'insensitive'
+  };
+
+  export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
   export const JsonNullValueFilter: {
     DbNull: typeof DbNull,
     JsonNull: typeof JsonNull,
@@ -11021,14 +11046,6 @@ export namespace Prisma {
   };
 
   export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
-
-
-  export const QueryMode: {
-    default: 'default',
-    insensitive: 'insensitive'
-  };
-
-  export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
   export const NullsOrder: {
@@ -11052,9 +11069,23 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'String[]'
+   */
+  export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
@@ -11066,9 +11097,23 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Gender'
    */
   export type EnumGenderFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Gender'>
+    
+
+
+  /**
+   * Reference to a field of type 'Gender[]'
+   */
+  export type ListEnumGenderFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Gender[]'>
     
 
 
@@ -11080,9 +11125,23 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'MaritalStatus[]'
+   */
+  export type ListEnumMaritalStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MaritalStatus[]'>
+    
+
+
+  /**
    * Reference to a field of type 'BloodGroup'
    */
   export type EnumBloodGroupFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BloodGroup'>
+    
+
+
+  /**
+   * Reference to a field of type 'BloodGroup[]'
+   */
+  export type ListEnumBloodGroupFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BloodGroup[]'>
     
 
 
@@ -11094,9 +11153,23 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'JobStatus[]'
+   */
+  export type ListEnumJobStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'JobStatus[]'>
+    
+
+
+  /**
    * Reference to a field of type 'EducationLevel'
    */
   export type EnumEducationLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EducationLevel'>
+    
+
+
+  /**
+   * Reference to a field of type 'EducationLevel[]'
+   */
+  export type ListEnumEducationLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EducationLevel[]'>
     
 
 
@@ -11108,9 +11181,23 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'PreviousJob[]'
+   */
+  export type ListEnumPreviousJobFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PreviousJob[]'>
+    
+
+
+  /**
    * Reference to a field of type 'VehicleType'
    */
   export type EnumVehicleTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VehicleType'>
+    
+
+
+  /**
+   * Reference to a field of type 'VehicleType[]'
+   */
+  export type ListEnumVehicleTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VehicleType[]'>
     
 
 
@@ -11122,9 +11209,23 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+  /**
    * Reference to a field of type 'YesNo'
    */
   export type EnumYesNoFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'YesNo'>
+    
+
+
+  /**
+   * Reference to a field of type 'YesNo[]'
+   */
+  export type ListEnumYesNoFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'YesNo[]'>
     
 
 
@@ -11136,9 +11237,23 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'LicenseType[]'
+   */
+  export type ListEnumLicenseTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LicenseType[]'>
+    
+
+
+  /**
    * Reference to a field of type 'CovidVaccinationStatus'
    */
   export type EnumCovidVaccinationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CovidVaccinationStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'CovidVaccinationStatus[]'
+   */
+  export type ListEnumCovidVaccinationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CovidVaccinationStatus[]'>
     
 
 
@@ -11150,9 +11265,23 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'BoosterStatus[]'
+   */
+  export type ListEnumBoosterStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BoosterStatus[]'>
+    
+
+
+  /**
    * Reference to a field of type 'MedicalStatus'
    */
   export type EnumMedicalStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MedicalStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'MedicalStatus[]'
+   */
+  export type ListEnumMedicalStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MedicalStatus[]'>
     
 
 
@@ -11164,6 +11293,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'DDCStatus[]'
+   */
+  export type ListEnumDDCStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DDCStatus[]'>
+    
+
+
+  /**
    * Reference to a field of type 'DDCResult'
    */
   export type EnumDDCResultFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DDCResult'>
@@ -11171,9 +11307,23 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'DDCResult[]'
+   */
+  export type ListEnumDDCResultFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DDCResult[]'>
+    
+
+
+  /**
    * Reference to a field of type 'DrugAlcoholStatus'
    */
   export type EnumDrugAlcoholStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DrugAlcoholStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'DrugAlcoholStatus[]'
+   */
+  export type ListEnumDrugAlcoholStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DrugAlcoholStatus[]'>
     
 
 
@@ -11202,6 +11352,13 @@ export namespace Prisma {
    * Reference to a field of type 'UserRole'
    */
   export type EnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole'>
+    
+
+
+  /**
+   * Reference to a field of type 'UserRole[]'
+   */
+  export type ListEnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole[]'>
     
   /**
    * Deep Input Types
@@ -13259,8 +13416,8 @@ export namespace Prisma {
 
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -13268,13 +13425,14 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -13282,13 +13440,14 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -13298,8 +13457,8 @@ export namespace Prisma {
 
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -13309,57 +13468,57 @@ export namespace Prisma {
 
   export type EnumGenderFilter<$PrismaModel = never> = {
     equals?: $Enums.Gender | EnumGenderFieldRefInput<$PrismaModel>
-    in?: $Enums.Gender[]
-    notIn?: $Enums.Gender[]
+    in?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
     not?: NestedEnumGenderFilter<$PrismaModel> | $Enums.Gender
   }
 
   export type EnumMaritalStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.MaritalStatus | EnumMaritalStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.MaritalStatus[]
-    notIn?: $Enums.MaritalStatus[]
+    in?: $Enums.MaritalStatus[] | ListEnumMaritalStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MaritalStatus[] | ListEnumMaritalStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumMaritalStatusFilter<$PrismaModel> | $Enums.MaritalStatus
   }
 
   export type EnumBloodGroupFilter<$PrismaModel = never> = {
     equals?: $Enums.BloodGroup | EnumBloodGroupFieldRefInput<$PrismaModel>
-    in?: $Enums.BloodGroup[]
-    notIn?: $Enums.BloodGroup[]
+    in?: $Enums.BloodGroup[] | ListEnumBloodGroupFieldRefInput<$PrismaModel>
+    notIn?: $Enums.BloodGroup[] | ListEnumBloodGroupFieldRefInput<$PrismaModel>
     not?: NestedEnumBloodGroupFilter<$PrismaModel> | $Enums.BloodGroup
   }
 
   export type EnumJobStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.JobStatus | EnumJobStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.JobStatus[]
-    notIn?: $Enums.JobStatus[]
+    in?: $Enums.JobStatus[] | ListEnumJobStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.JobStatus[] | ListEnumJobStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumJobStatusFilter<$PrismaModel> | $Enums.JobStatus
   }
 
   export type EnumEducationLevelFilter<$PrismaModel = never> = {
     equals?: $Enums.EducationLevel | EnumEducationLevelFieldRefInput<$PrismaModel>
-    in?: $Enums.EducationLevel[]
-    notIn?: $Enums.EducationLevel[]
+    in?: $Enums.EducationLevel[] | ListEnumEducationLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.EducationLevel[] | ListEnumEducationLevelFieldRefInput<$PrismaModel>
     not?: NestedEnumEducationLevelFilter<$PrismaModel> | $Enums.EducationLevel
   }
 
   export type EnumPreviousJobFilter<$PrismaModel = never> = {
     equals?: $Enums.PreviousJob | EnumPreviousJobFieldRefInput<$PrismaModel>
-    in?: $Enums.PreviousJob[]
-    notIn?: $Enums.PreviousJob[]
+    in?: $Enums.PreviousJob[] | ListEnumPreviousJobFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PreviousJob[] | ListEnumPreviousJobFieldRefInput<$PrismaModel>
     not?: NestedEnumPreviousJobFilter<$PrismaModel> | $Enums.PreviousJob
   }
 
   export type EnumVehicleTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.VehicleType | EnumVehicleTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.VehicleType[]
-    notIn?: $Enums.VehicleType[]
+    in?: $Enums.VehicleType[] | ListEnumVehicleTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.VehicleType[] | ListEnumVehicleTypeFieldRefInput<$PrismaModel>
     not?: NestedEnumVehicleTypeFilter<$PrismaModel> | $Enums.VehicleType
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -13369,8 +13528,8 @@ export namespace Prisma {
 
   export type FloatNullableFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
@@ -13380,29 +13539,29 @@ export namespace Prisma {
 
   export type EnumYesNoFilter<$PrismaModel = never> = {
     equals?: $Enums.YesNo | EnumYesNoFieldRefInput<$PrismaModel>
-    in?: $Enums.YesNo[]
-    notIn?: $Enums.YesNo[]
+    in?: $Enums.YesNo[] | ListEnumYesNoFieldRefInput<$PrismaModel>
+    notIn?: $Enums.YesNo[] | ListEnumYesNoFieldRefInput<$PrismaModel>
     not?: NestedEnumYesNoFilter<$PrismaModel> | $Enums.YesNo
   }
 
   export type EnumLicenseTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.LicenseType | EnumLicenseTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.LicenseType[]
-    notIn?: $Enums.LicenseType[]
+    in?: $Enums.LicenseType[] | ListEnumLicenseTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.LicenseType[] | ListEnumLicenseTypeFieldRefInput<$PrismaModel>
     not?: NestedEnumLicenseTypeFilter<$PrismaModel> | $Enums.LicenseType
   }
 
   export type EnumCovidVaccinationStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.CovidVaccinationStatus | EnumCovidVaccinationStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.CovidVaccinationStatus[]
-    notIn?: $Enums.CovidVaccinationStatus[]
+    in?: $Enums.CovidVaccinationStatus[] | ListEnumCovidVaccinationStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CovidVaccinationStatus[] | ListEnumCovidVaccinationStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumCovidVaccinationStatusFilter<$PrismaModel> | $Enums.CovidVaccinationStatus
   }
 
   export type DateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -13412,36 +13571,36 @@ export namespace Prisma {
 
   export type EnumBoosterStatusNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.BoosterStatus | EnumBoosterStatusFieldRefInput<$PrismaModel> | null
-    in?: $Enums.BoosterStatus[] | null
-    notIn?: $Enums.BoosterStatus[] | null
+    in?: $Enums.BoosterStatus[] | ListEnumBoosterStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.BoosterStatus[] | ListEnumBoosterStatusFieldRefInput<$PrismaModel> | null
     not?: NestedEnumBoosterStatusNullableFilter<$PrismaModel> | $Enums.BoosterStatus | null
   }
 
   export type EnumMedicalStatusNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.MedicalStatus | EnumMedicalStatusFieldRefInput<$PrismaModel> | null
-    in?: $Enums.MedicalStatus[] | null
-    notIn?: $Enums.MedicalStatus[] | null
+    in?: $Enums.MedicalStatus[] | ListEnumMedicalStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.MedicalStatus[] | ListEnumMedicalStatusFieldRefInput<$PrismaModel> | null
     not?: NestedEnumMedicalStatusNullableFilter<$PrismaModel> | $Enums.MedicalStatus | null
   }
 
   export type EnumDDCStatusNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.DDCStatus | EnumDDCStatusFieldRefInput<$PrismaModel> | null
-    in?: $Enums.DDCStatus[] | null
-    notIn?: $Enums.DDCStatus[] | null
+    in?: $Enums.DDCStatus[] | ListEnumDDCStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.DDCStatus[] | ListEnumDDCStatusFieldRefInput<$PrismaModel> | null
     not?: NestedEnumDDCStatusNullableFilter<$PrismaModel> | $Enums.DDCStatus | null
   }
 
   export type EnumDDCResultNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.DDCResult | EnumDDCResultFieldRefInput<$PrismaModel> | null
-    in?: $Enums.DDCResult[] | null
-    notIn?: $Enums.DDCResult[] | null
+    in?: $Enums.DDCResult[] | ListEnumDDCResultFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.DDCResult[] | ListEnumDDCResultFieldRefInput<$PrismaModel> | null
     not?: NestedEnumDDCResultNullableFilter<$PrismaModel> | $Enums.DDCResult | null
   }
 
   export type EnumDrugAlcoholStatusNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.DrugAlcoholStatus | EnumDrugAlcoholStatusFieldRefInput<$PrismaModel> | null
-    in?: $Enums.DrugAlcoholStatus[] | null
-    notIn?: $Enums.DrugAlcoholStatus[] | null
+    in?: $Enums.DrugAlcoholStatus[] | ListEnumDrugAlcoholStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.DrugAlcoholStatus[] | ListEnumDrugAlcoholStatusFieldRefInput<$PrismaModel> | null
     not?: NestedEnumDrugAlcoholStatusNullableFilter<$PrismaModel> | $Enums.DrugAlcoholStatus | null
   }
   export type JsonFilter<$PrismaModel = never> =
@@ -13453,13 +13612,18 @@ export namespace Prisma {
 
   export type JsonFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string
+    path?: string[]
     mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
     string_contains?: string | StringFieldRefInput<$PrismaModel>
     string_starts_with?: string | StringFieldRefInput<$PrismaModel>
     string_ends_with?: string | StringFieldRefInput<$PrismaModel>
     array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
@@ -13776,8 +13940,8 @@ export namespace Prisma {
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -13785,6 +13949,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
     not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
@@ -13793,8 +13958,8 @@ export namespace Prisma {
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -13802,6 +13967,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
     not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
@@ -13810,8 +13976,8 @@ export namespace Prisma {
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -13824,8 +13990,8 @@ export namespace Prisma {
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -13840,8 +14006,8 @@ export namespace Prisma {
 
   export type EnumGenderWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.Gender | EnumGenderFieldRefInput<$PrismaModel>
-    in?: $Enums.Gender[]
-    notIn?: $Enums.Gender[]
+    in?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
     not?: NestedEnumGenderWithAggregatesFilter<$PrismaModel> | $Enums.Gender
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumGenderFilter<$PrismaModel>
@@ -13850,8 +14016,8 @@ export namespace Prisma {
 
   export type EnumMaritalStatusWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.MaritalStatus | EnumMaritalStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.MaritalStatus[]
-    notIn?: $Enums.MaritalStatus[]
+    in?: $Enums.MaritalStatus[] | ListEnumMaritalStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MaritalStatus[] | ListEnumMaritalStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumMaritalStatusWithAggregatesFilter<$PrismaModel> | $Enums.MaritalStatus
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumMaritalStatusFilter<$PrismaModel>
@@ -13860,8 +14026,8 @@ export namespace Prisma {
 
   export type EnumBloodGroupWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.BloodGroup | EnumBloodGroupFieldRefInput<$PrismaModel>
-    in?: $Enums.BloodGroup[]
-    notIn?: $Enums.BloodGroup[]
+    in?: $Enums.BloodGroup[] | ListEnumBloodGroupFieldRefInput<$PrismaModel>
+    notIn?: $Enums.BloodGroup[] | ListEnumBloodGroupFieldRefInput<$PrismaModel>
     not?: NestedEnumBloodGroupWithAggregatesFilter<$PrismaModel> | $Enums.BloodGroup
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumBloodGroupFilter<$PrismaModel>
@@ -13870,8 +14036,8 @@ export namespace Prisma {
 
   export type EnumJobStatusWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.JobStatus | EnumJobStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.JobStatus[]
-    notIn?: $Enums.JobStatus[]
+    in?: $Enums.JobStatus[] | ListEnumJobStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.JobStatus[] | ListEnumJobStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumJobStatusWithAggregatesFilter<$PrismaModel> | $Enums.JobStatus
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumJobStatusFilter<$PrismaModel>
@@ -13880,8 +14046,8 @@ export namespace Prisma {
 
   export type EnumEducationLevelWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.EducationLevel | EnumEducationLevelFieldRefInput<$PrismaModel>
-    in?: $Enums.EducationLevel[]
-    notIn?: $Enums.EducationLevel[]
+    in?: $Enums.EducationLevel[] | ListEnumEducationLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.EducationLevel[] | ListEnumEducationLevelFieldRefInput<$PrismaModel>
     not?: NestedEnumEducationLevelWithAggregatesFilter<$PrismaModel> | $Enums.EducationLevel
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumEducationLevelFilter<$PrismaModel>
@@ -13890,8 +14056,8 @@ export namespace Prisma {
 
   export type EnumPreviousJobWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.PreviousJob | EnumPreviousJobFieldRefInput<$PrismaModel>
-    in?: $Enums.PreviousJob[]
-    notIn?: $Enums.PreviousJob[]
+    in?: $Enums.PreviousJob[] | ListEnumPreviousJobFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PreviousJob[] | ListEnumPreviousJobFieldRefInput<$PrismaModel>
     not?: NestedEnumPreviousJobWithAggregatesFilter<$PrismaModel> | $Enums.PreviousJob
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumPreviousJobFilter<$PrismaModel>
@@ -13900,8 +14066,8 @@ export namespace Prisma {
 
   export type EnumVehicleTypeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.VehicleType | EnumVehicleTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.VehicleType[]
-    notIn?: $Enums.VehicleType[]
+    in?: $Enums.VehicleType[] | ListEnumVehicleTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.VehicleType[] | ListEnumVehicleTypeFieldRefInput<$PrismaModel>
     not?: NestedEnumVehicleTypeWithAggregatesFilter<$PrismaModel> | $Enums.VehicleType
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumVehicleTypeFilter<$PrismaModel>
@@ -13910,8 +14076,8 @@ export namespace Prisma {
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -13926,8 +14092,8 @@ export namespace Prisma {
 
   export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
@@ -13942,8 +14108,8 @@ export namespace Prisma {
 
   export type EnumYesNoWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.YesNo | EnumYesNoFieldRefInput<$PrismaModel>
-    in?: $Enums.YesNo[]
-    notIn?: $Enums.YesNo[]
+    in?: $Enums.YesNo[] | ListEnumYesNoFieldRefInput<$PrismaModel>
+    notIn?: $Enums.YesNo[] | ListEnumYesNoFieldRefInput<$PrismaModel>
     not?: NestedEnumYesNoWithAggregatesFilter<$PrismaModel> | $Enums.YesNo
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumYesNoFilter<$PrismaModel>
@@ -13952,8 +14118,8 @@ export namespace Prisma {
 
   export type EnumLicenseTypeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.LicenseType | EnumLicenseTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.LicenseType[]
-    notIn?: $Enums.LicenseType[]
+    in?: $Enums.LicenseType[] | ListEnumLicenseTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.LicenseType[] | ListEnumLicenseTypeFieldRefInput<$PrismaModel>
     not?: NestedEnumLicenseTypeWithAggregatesFilter<$PrismaModel> | $Enums.LicenseType
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumLicenseTypeFilter<$PrismaModel>
@@ -13962,8 +14128,8 @@ export namespace Prisma {
 
   export type EnumCovidVaccinationStatusWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.CovidVaccinationStatus | EnumCovidVaccinationStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.CovidVaccinationStatus[]
-    notIn?: $Enums.CovidVaccinationStatus[]
+    in?: $Enums.CovidVaccinationStatus[] | ListEnumCovidVaccinationStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CovidVaccinationStatus[] | ListEnumCovidVaccinationStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumCovidVaccinationStatusWithAggregatesFilter<$PrismaModel> | $Enums.CovidVaccinationStatus
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumCovidVaccinationStatusFilter<$PrismaModel>
@@ -13972,8 +14138,8 @@ export namespace Prisma {
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -13986,8 +14152,8 @@ export namespace Prisma {
 
   export type EnumBoosterStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.BoosterStatus | EnumBoosterStatusFieldRefInput<$PrismaModel> | null
-    in?: $Enums.BoosterStatus[] | null
-    notIn?: $Enums.BoosterStatus[] | null
+    in?: $Enums.BoosterStatus[] | ListEnumBoosterStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.BoosterStatus[] | ListEnumBoosterStatusFieldRefInput<$PrismaModel> | null
     not?: NestedEnumBoosterStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.BoosterStatus | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumBoosterStatusNullableFilter<$PrismaModel>
@@ -13996,8 +14162,8 @@ export namespace Prisma {
 
   export type EnumMedicalStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.MedicalStatus | EnumMedicalStatusFieldRefInput<$PrismaModel> | null
-    in?: $Enums.MedicalStatus[] | null
-    notIn?: $Enums.MedicalStatus[] | null
+    in?: $Enums.MedicalStatus[] | ListEnumMedicalStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.MedicalStatus[] | ListEnumMedicalStatusFieldRefInput<$PrismaModel> | null
     not?: NestedEnumMedicalStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.MedicalStatus | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumMedicalStatusNullableFilter<$PrismaModel>
@@ -14006,8 +14172,8 @@ export namespace Prisma {
 
   export type EnumDDCStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.DDCStatus | EnumDDCStatusFieldRefInput<$PrismaModel> | null
-    in?: $Enums.DDCStatus[] | null
-    notIn?: $Enums.DDCStatus[] | null
+    in?: $Enums.DDCStatus[] | ListEnumDDCStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.DDCStatus[] | ListEnumDDCStatusFieldRefInput<$PrismaModel> | null
     not?: NestedEnumDDCStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.DDCStatus | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumDDCStatusNullableFilter<$PrismaModel>
@@ -14016,8 +14182,8 @@ export namespace Prisma {
 
   export type EnumDDCResultNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.DDCResult | EnumDDCResultFieldRefInput<$PrismaModel> | null
-    in?: $Enums.DDCResult[] | null
-    notIn?: $Enums.DDCResult[] | null
+    in?: $Enums.DDCResult[] | ListEnumDDCResultFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.DDCResult[] | ListEnumDDCResultFieldRefInput<$PrismaModel> | null
     not?: NestedEnumDDCResultNullableWithAggregatesFilter<$PrismaModel> | $Enums.DDCResult | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumDDCResultNullableFilter<$PrismaModel>
@@ -14026,8 +14192,8 @@ export namespace Prisma {
 
   export type EnumDrugAlcoholStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.DrugAlcoholStatus | EnumDrugAlcoholStatusFieldRefInput<$PrismaModel> | null
-    in?: $Enums.DrugAlcoholStatus[] | null
-    notIn?: $Enums.DrugAlcoholStatus[] | null
+    in?: $Enums.DrugAlcoholStatus[] | ListEnumDrugAlcoholStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.DrugAlcoholStatus[] | ListEnumDrugAlcoholStatusFieldRefInput<$PrismaModel> | null
     not?: NestedEnumDrugAlcoholStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.DrugAlcoholStatus | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumDrugAlcoholStatusNullableFilter<$PrismaModel>
@@ -14042,13 +14208,18 @@ export namespace Prisma {
 
   export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string
+    path?: string[]
     mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
     string_contains?: string | StringFieldRefInput<$PrismaModel>
     string_starts_with?: string | StringFieldRefInput<$PrismaModel>
     string_ends_with?: string | StringFieldRefInput<$PrismaModel>
     array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedJsonFilter<$PrismaModel>
@@ -14292,8 +14463,8 @@ export namespace Prisma {
 
   export type EnumUserRoleFilter<$PrismaModel = never> = {
     equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.UserRole[]
-    notIn?: $Enums.UserRole[]
+    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
     not?: NestedEnumUserRoleFilter<$PrismaModel> | $Enums.UserRole
   }
 
@@ -14351,8 +14522,8 @@ export namespace Prisma {
 
   export type EnumUserRoleWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.UserRole[]
-    notIn?: $Enums.UserRole[]
+    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
     not?: NestedEnumUserRoleWithAggregatesFilter<$PrismaModel> | $Enums.UserRole
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumUserRoleFilter<$PrismaModel>
@@ -14865,8 +15036,8 @@ export namespace Prisma {
 
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -14879,8 +15050,8 @@ export namespace Prisma {
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -14893,8 +15064,8 @@ export namespace Prisma {
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -14904,8 +15075,8 @@ export namespace Prisma {
 
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -14915,57 +15086,57 @@ export namespace Prisma {
 
   export type NestedEnumGenderFilter<$PrismaModel = never> = {
     equals?: $Enums.Gender | EnumGenderFieldRefInput<$PrismaModel>
-    in?: $Enums.Gender[]
-    notIn?: $Enums.Gender[]
+    in?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
     not?: NestedEnumGenderFilter<$PrismaModel> | $Enums.Gender
   }
 
   export type NestedEnumMaritalStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.MaritalStatus | EnumMaritalStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.MaritalStatus[]
-    notIn?: $Enums.MaritalStatus[]
+    in?: $Enums.MaritalStatus[] | ListEnumMaritalStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MaritalStatus[] | ListEnumMaritalStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumMaritalStatusFilter<$PrismaModel> | $Enums.MaritalStatus
   }
 
   export type NestedEnumBloodGroupFilter<$PrismaModel = never> = {
     equals?: $Enums.BloodGroup | EnumBloodGroupFieldRefInput<$PrismaModel>
-    in?: $Enums.BloodGroup[]
-    notIn?: $Enums.BloodGroup[]
+    in?: $Enums.BloodGroup[] | ListEnumBloodGroupFieldRefInput<$PrismaModel>
+    notIn?: $Enums.BloodGroup[] | ListEnumBloodGroupFieldRefInput<$PrismaModel>
     not?: NestedEnumBloodGroupFilter<$PrismaModel> | $Enums.BloodGroup
   }
 
   export type NestedEnumJobStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.JobStatus | EnumJobStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.JobStatus[]
-    notIn?: $Enums.JobStatus[]
+    in?: $Enums.JobStatus[] | ListEnumJobStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.JobStatus[] | ListEnumJobStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumJobStatusFilter<$PrismaModel> | $Enums.JobStatus
   }
 
   export type NestedEnumEducationLevelFilter<$PrismaModel = never> = {
     equals?: $Enums.EducationLevel | EnumEducationLevelFieldRefInput<$PrismaModel>
-    in?: $Enums.EducationLevel[]
-    notIn?: $Enums.EducationLevel[]
+    in?: $Enums.EducationLevel[] | ListEnumEducationLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.EducationLevel[] | ListEnumEducationLevelFieldRefInput<$PrismaModel>
     not?: NestedEnumEducationLevelFilter<$PrismaModel> | $Enums.EducationLevel
   }
 
   export type NestedEnumPreviousJobFilter<$PrismaModel = never> = {
     equals?: $Enums.PreviousJob | EnumPreviousJobFieldRefInput<$PrismaModel>
-    in?: $Enums.PreviousJob[]
-    notIn?: $Enums.PreviousJob[]
+    in?: $Enums.PreviousJob[] | ListEnumPreviousJobFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PreviousJob[] | ListEnumPreviousJobFieldRefInput<$PrismaModel>
     not?: NestedEnumPreviousJobFilter<$PrismaModel> | $Enums.PreviousJob
   }
 
   export type NestedEnumVehicleTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.VehicleType | EnumVehicleTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.VehicleType[]
-    notIn?: $Enums.VehicleType[]
+    in?: $Enums.VehicleType[] | ListEnumVehicleTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.VehicleType[] | ListEnumVehicleTypeFieldRefInput<$PrismaModel>
     not?: NestedEnumVehicleTypeFilter<$PrismaModel> | $Enums.VehicleType
   }
 
   export type NestedIntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -14975,8 +15146,8 @@ export namespace Prisma {
 
   export type NestedFloatNullableFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
@@ -14986,29 +15157,29 @@ export namespace Prisma {
 
   export type NestedEnumYesNoFilter<$PrismaModel = never> = {
     equals?: $Enums.YesNo | EnumYesNoFieldRefInput<$PrismaModel>
-    in?: $Enums.YesNo[]
-    notIn?: $Enums.YesNo[]
+    in?: $Enums.YesNo[] | ListEnumYesNoFieldRefInput<$PrismaModel>
+    notIn?: $Enums.YesNo[] | ListEnumYesNoFieldRefInput<$PrismaModel>
     not?: NestedEnumYesNoFilter<$PrismaModel> | $Enums.YesNo
   }
 
   export type NestedEnumLicenseTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.LicenseType | EnumLicenseTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.LicenseType[]
-    notIn?: $Enums.LicenseType[]
+    in?: $Enums.LicenseType[] | ListEnumLicenseTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.LicenseType[] | ListEnumLicenseTypeFieldRefInput<$PrismaModel>
     not?: NestedEnumLicenseTypeFilter<$PrismaModel> | $Enums.LicenseType
   }
 
   export type NestedEnumCovidVaccinationStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.CovidVaccinationStatus | EnumCovidVaccinationStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.CovidVaccinationStatus[]
-    notIn?: $Enums.CovidVaccinationStatus[]
+    in?: $Enums.CovidVaccinationStatus[] | ListEnumCovidVaccinationStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CovidVaccinationStatus[] | ListEnumCovidVaccinationStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumCovidVaccinationStatusFilter<$PrismaModel> | $Enums.CovidVaccinationStatus
   }
 
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -15018,36 +15189,36 @@ export namespace Prisma {
 
   export type NestedEnumBoosterStatusNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.BoosterStatus | EnumBoosterStatusFieldRefInput<$PrismaModel> | null
-    in?: $Enums.BoosterStatus[] | null
-    notIn?: $Enums.BoosterStatus[] | null
+    in?: $Enums.BoosterStatus[] | ListEnumBoosterStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.BoosterStatus[] | ListEnumBoosterStatusFieldRefInput<$PrismaModel> | null
     not?: NestedEnumBoosterStatusNullableFilter<$PrismaModel> | $Enums.BoosterStatus | null
   }
 
   export type NestedEnumMedicalStatusNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.MedicalStatus | EnumMedicalStatusFieldRefInput<$PrismaModel> | null
-    in?: $Enums.MedicalStatus[] | null
-    notIn?: $Enums.MedicalStatus[] | null
+    in?: $Enums.MedicalStatus[] | ListEnumMedicalStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.MedicalStatus[] | ListEnumMedicalStatusFieldRefInput<$PrismaModel> | null
     not?: NestedEnumMedicalStatusNullableFilter<$PrismaModel> | $Enums.MedicalStatus | null
   }
 
   export type NestedEnumDDCStatusNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.DDCStatus | EnumDDCStatusFieldRefInput<$PrismaModel> | null
-    in?: $Enums.DDCStatus[] | null
-    notIn?: $Enums.DDCStatus[] | null
+    in?: $Enums.DDCStatus[] | ListEnumDDCStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.DDCStatus[] | ListEnumDDCStatusFieldRefInput<$PrismaModel> | null
     not?: NestedEnumDDCStatusNullableFilter<$PrismaModel> | $Enums.DDCStatus | null
   }
 
   export type NestedEnumDDCResultNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.DDCResult | EnumDDCResultFieldRefInput<$PrismaModel> | null
-    in?: $Enums.DDCResult[] | null
-    notIn?: $Enums.DDCResult[] | null
+    in?: $Enums.DDCResult[] | ListEnumDDCResultFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.DDCResult[] | ListEnumDDCResultFieldRefInput<$PrismaModel> | null
     not?: NestedEnumDDCResultNullableFilter<$PrismaModel> | $Enums.DDCResult | null
   }
 
   export type NestedEnumDrugAlcoholStatusNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.DrugAlcoholStatus | EnumDrugAlcoholStatusFieldRefInput<$PrismaModel> | null
-    in?: $Enums.DrugAlcoholStatus[] | null
-    notIn?: $Enums.DrugAlcoholStatus[] | null
+    in?: $Enums.DrugAlcoholStatus[] | ListEnumDrugAlcoholStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.DrugAlcoholStatus[] | ListEnumDrugAlcoholStatusFieldRefInput<$PrismaModel> | null
     not?: NestedEnumDrugAlcoholStatusNullableFilter<$PrismaModel> | $Enums.DrugAlcoholStatus | null
   }
 
@@ -15058,8 +15229,8 @@ export namespace Prisma {
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -15075,8 +15246,8 @@ export namespace Prisma {
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -15092,8 +15263,8 @@ export namespace Prisma {
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -15106,8 +15277,8 @@ export namespace Prisma {
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -15122,8 +15293,8 @@ export namespace Prisma {
 
   export type NestedFloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
@@ -15133,8 +15304,8 @@ export namespace Prisma {
 
   export type NestedEnumGenderWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.Gender | EnumGenderFieldRefInput<$PrismaModel>
-    in?: $Enums.Gender[]
-    notIn?: $Enums.Gender[]
+    in?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
     not?: NestedEnumGenderWithAggregatesFilter<$PrismaModel> | $Enums.Gender
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumGenderFilter<$PrismaModel>
@@ -15143,8 +15314,8 @@ export namespace Prisma {
 
   export type NestedEnumMaritalStatusWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.MaritalStatus | EnumMaritalStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.MaritalStatus[]
-    notIn?: $Enums.MaritalStatus[]
+    in?: $Enums.MaritalStatus[] | ListEnumMaritalStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MaritalStatus[] | ListEnumMaritalStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumMaritalStatusWithAggregatesFilter<$PrismaModel> | $Enums.MaritalStatus
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumMaritalStatusFilter<$PrismaModel>
@@ -15153,8 +15324,8 @@ export namespace Prisma {
 
   export type NestedEnumBloodGroupWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.BloodGroup | EnumBloodGroupFieldRefInput<$PrismaModel>
-    in?: $Enums.BloodGroup[]
-    notIn?: $Enums.BloodGroup[]
+    in?: $Enums.BloodGroup[] | ListEnumBloodGroupFieldRefInput<$PrismaModel>
+    notIn?: $Enums.BloodGroup[] | ListEnumBloodGroupFieldRefInput<$PrismaModel>
     not?: NestedEnumBloodGroupWithAggregatesFilter<$PrismaModel> | $Enums.BloodGroup
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumBloodGroupFilter<$PrismaModel>
@@ -15163,8 +15334,8 @@ export namespace Prisma {
 
   export type NestedEnumJobStatusWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.JobStatus | EnumJobStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.JobStatus[]
-    notIn?: $Enums.JobStatus[]
+    in?: $Enums.JobStatus[] | ListEnumJobStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.JobStatus[] | ListEnumJobStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumJobStatusWithAggregatesFilter<$PrismaModel> | $Enums.JobStatus
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumJobStatusFilter<$PrismaModel>
@@ -15173,8 +15344,8 @@ export namespace Prisma {
 
   export type NestedEnumEducationLevelWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.EducationLevel | EnumEducationLevelFieldRefInput<$PrismaModel>
-    in?: $Enums.EducationLevel[]
-    notIn?: $Enums.EducationLevel[]
+    in?: $Enums.EducationLevel[] | ListEnumEducationLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.EducationLevel[] | ListEnumEducationLevelFieldRefInput<$PrismaModel>
     not?: NestedEnumEducationLevelWithAggregatesFilter<$PrismaModel> | $Enums.EducationLevel
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumEducationLevelFilter<$PrismaModel>
@@ -15183,8 +15354,8 @@ export namespace Prisma {
 
   export type NestedEnumPreviousJobWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.PreviousJob | EnumPreviousJobFieldRefInput<$PrismaModel>
-    in?: $Enums.PreviousJob[]
-    notIn?: $Enums.PreviousJob[]
+    in?: $Enums.PreviousJob[] | ListEnumPreviousJobFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PreviousJob[] | ListEnumPreviousJobFieldRefInput<$PrismaModel>
     not?: NestedEnumPreviousJobWithAggregatesFilter<$PrismaModel> | $Enums.PreviousJob
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumPreviousJobFilter<$PrismaModel>
@@ -15193,8 +15364,8 @@ export namespace Prisma {
 
   export type NestedEnumVehicleTypeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.VehicleType | EnumVehicleTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.VehicleType[]
-    notIn?: $Enums.VehicleType[]
+    in?: $Enums.VehicleType[] | ListEnumVehicleTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.VehicleType[] | ListEnumVehicleTypeFieldRefInput<$PrismaModel>
     not?: NestedEnumVehicleTypeWithAggregatesFilter<$PrismaModel> | $Enums.VehicleType
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumVehicleTypeFilter<$PrismaModel>
@@ -15203,8 +15374,8 @@ export namespace Prisma {
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -15219,8 +15390,8 @@ export namespace Prisma {
 
   export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
@@ -15235,8 +15406,8 @@ export namespace Prisma {
 
   export type NestedEnumYesNoWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.YesNo | EnumYesNoFieldRefInput<$PrismaModel>
-    in?: $Enums.YesNo[]
-    notIn?: $Enums.YesNo[]
+    in?: $Enums.YesNo[] | ListEnumYesNoFieldRefInput<$PrismaModel>
+    notIn?: $Enums.YesNo[] | ListEnumYesNoFieldRefInput<$PrismaModel>
     not?: NestedEnumYesNoWithAggregatesFilter<$PrismaModel> | $Enums.YesNo
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumYesNoFilter<$PrismaModel>
@@ -15245,8 +15416,8 @@ export namespace Prisma {
 
   export type NestedEnumLicenseTypeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.LicenseType | EnumLicenseTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.LicenseType[]
-    notIn?: $Enums.LicenseType[]
+    in?: $Enums.LicenseType[] | ListEnumLicenseTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.LicenseType[] | ListEnumLicenseTypeFieldRefInput<$PrismaModel>
     not?: NestedEnumLicenseTypeWithAggregatesFilter<$PrismaModel> | $Enums.LicenseType
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumLicenseTypeFilter<$PrismaModel>
@@ -15255,8 +15426,8 @@ export namespace Prisma {
 
   export type NestedEnumCovidVaccinationStatusWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.CovidVaccinationStatus | EnumCovidVaccinationStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.CovidVaccinationStatus[]
-    notIn?: $Enums.CovidVaccinationStatus[]
+    in?: $Enums.CovidVaccinationStatus[] | ListEnumCovidVaccinationStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CovidVaccinationStatus[] | ListEnumCovidVaccinationStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumCovidVaccinationStatusWithAggregatesFilter<$PrismaModel> | $Enums.CovidVaccinationStatus
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumCovidVaccinationStatusFilter<$PrismaModel>
@@ -15265,8 +15436,8 @@ export namespace Prisma {
 
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -15279,8 +15450,8 @@ export namespace Prisma {
 
   export type NestedEnumBoosterStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.BoosterStatus | EnumBoosterStatusFieldRefInput<$PrismaModel> | null
-    in?: $Enums.BoosterStatus[] | null
-    notIn?: $Enums.BoosterStatus[] | null
+    in?: $Enums.BoosterStatus[] | ListEnumBoosterStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.BoosterStatus[] | ListEnumBoosterStatusFieldRefInput<$PrismaModel> | null
     not?: NestedEnumBoosterStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.BoosterStatus | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumBoosterStatusNullableFilter<$PrismaModel>
@@ -15289,8 +15460,8 @@ export namespace Prisma {
 
   export type NestedEnumMedicalStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.MedicalStatus | EnumMedicalStatusFieldRefInput<$PrismaModel> | null
-    in?: $Enums.MedicalStatus[] | null
-    notIn?: $Enums.MedicalStatus[] | null
+    in?: $Enums.MedicalStatus[] | ListEnumMedicalStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.MedicalStatus[] | ListEnumMedicalStatusFieldRefInput<$PrismaModel> | null
     not?: NestedEnumMedicalStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.MedicalStatus | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumMedicalStatusNullableFilter<$PrismaModel>
@@ -15299,8 +15470,8 @@ export namespace Prisma {
 
   export type NestedEnumDDCStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.DDCStatus | EnumDDCStatusFieldRefInput<$PrismaModel> | null
-    in?: $Enums.DDCStatus[] | null
-    notIn?: $Enums.DDCStatus[] | null
+    in?: $Enums.DDCStatus[] | ListEnumDDCStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.DDCStatus[] | ListEnumDDCStatusFieldRefInput<$PrismaModel> | null
     not?: NestedEnumDDCStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.DDCStatus | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumDDCStatusNullableFilter<$PrismaModel>
@@ -15309,8 +15480,8 @@ export namespace Prisma {
 
   export type NestedEnumDDCResultNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.DDCResult | EnumDDCResultFieldRefInput<$PrismaModel> | null
-    in?: $Enums.DDCResult[] | null
-    notIn?: $Enums.DDCResult[] | null
+    in?: $Enums.DDCResult[] | ListEnumDDCResultFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.DDCResult[] | ListEnumDDCResultFieldRefInput<$PrismaModel> | null
     not?: NestedEnumDDCResultNullableWithAggregatesFilter<$PrismaModel> | $Enums.DDCResult | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumDDCResultNullableFilter<$PrismaModel>
@@ -15319,8 +15490,8 @@ export namespace Prisma {
 
   export type NestedEnumDrugAlcoholStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.DrugAlcoholStatus | EnumDrugAlcoholStatusFieldRefInput<$PrismaModel> | null
-    in?: $Enums.DrugAlcoholStatus[] | null
-    notIn?: $Enums.DrugAlcoholStatus[] | null
+    in?: $Enums.DrugAlcoholStatus[] | ListEnumDrugAlcoholStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.DrugAlcoholStatus[] | ListEnumDrugAlcoholStatusFieldRefInput<$PrismaModel> | null
     not?: NestedEnumDrugAlcoholStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.DrugAlcoholStatus | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumDrugAlcoholStatusNullableFilter<$PrismaModel>
@@ -15335,13 +15506,18 @@ export namespace Prisma {
 
   export type NestedJsonFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string
+    path?: string[]
     mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
     string_contains?: string | StringFieldRefInput<$PrismaModel>
     string_starts_with?: string | StringFieldRefInput<$PrismaModel>
     string_ends_with?: string | StringFieldRefInput<$PrismaModel>
     array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
@@ -15355,15 +15531,15 @@ export namespace Prisma {
 
   export type NestedEnumUserRoleFilter<$PrismaModel = never> = {
     equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.UserRole[]
-    notIn?: $Enums.UserRole[]
+    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
     not?: NestedEnumUserRoleFilter<$PrismaModel> | $Enums.UserRole
   }
 
   export type NestedEnumUserRoleWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.UserRole[]
-    notIn?: $Enums.UserRole[]
+    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
     not?: NestedEnumUserRoleWithAggregatesFilter<$PrismaModel> | $Enums.UserRole
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumUserRoleFilter<$PrismaModel>
@@ -15403,6 +15579,7 @@ export namespace Prisma {
 
   export type DriverWorkExperienceCreateManyDriverInputEnvelope = {
     data: DriverWorkExperienceCreateManyDriverInput | DriverWorkExperienceCreateManyDriverInput[]
+    skipDuplicates?: boolean
   }
 
   export type DriverReferenceCreateWithoutDriverInput = {
@@ -15434,6 +15611,7 @@ export namespace Prisma {
 
   export type DriverReferenceCreateManyDriverInputEnvelope = {
     data: DriverReferenceCreateManyDriverInput | DriverReferenceCreateManyDriverInput[]
+    skipDuplicates?: boolean
   }
 
   export type DriverDocumentCreateWithoutDriverInput = {
@@ -15471,6 +15649,7 @@ export namespace Prisma {
 
   export type DriverDocumentCreateManyDriverInputEnvelope = {
     data: DriverDocumentCreateManyDriverInput | DriverDocumentCreateManyDriverInput[]
+    skipDuplicates?: boolean
   }
 
   export type DriverViolationCreateWithoutDriverInput = {
@@ -15506,6 +15685,7 @@ export namespace Prisma {
 
   export type DriverViolationCreateManyDriverInputEnvelope = {
     data: DriverViolationCreateManyDriverInput | DriverViolationCreateManyDriverInput[]
+    skipDuplicates?: boolean
   }
 
   export type DriverAssignmentCreateWithoutDriverInput = {
@@ -15539,6 +15719,7 @@ export namespace Prisma {
 
   export type DriverAssignmentCreateManyDriverInputEnvelope = {
     data: DriverAssignmentCreateManyDriverInput | DriverAssignmentCreateManyDriverInput[]
+    skipDuplicates?: boolean
   }
 
   export type UserCreateWithoutCreatedDriversInput = {
@@ -17703,6 +17884,7 @@ export namespace Prisma {
 
   export type DriverCreateManyCreatedByInputEnvelope = {
     data: DriverCreateManyCreatedByInput | DriverCreateManyCreatedByInput[]
+    skipDuplicates?: boolean
   }
 
   export type DriverCreateWithoutUpdatedByInput = {
@@ -17872,6 +18054,7 @@ export namespace Prisma {
 
   export type DriverCreateManyUpdatedByInputEnvelope = {
     data: DriverCreateManyUpdatedByInput | DriverCreateManyUpdatedByInput[]
+    skipDuplicates?: boolean
   }
 
   export type DriverUpsertWithWhereUniqueWithoutCreatedByInput = {
