@@ -1,0 +1,379 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Enums for dropdown values
+enum MaritalStatus {
+  Single
+  Married
+  Divorced
+  Widowed
+}
+
+enum CovidVaccinationStatus {
+  FirstDose
+  SecondDose
+  FullyVaccinated
+  Booster
+}
+
+enum YesNo {
+  Yes
+  No
+}
+
+enum BoosterStatus {
+  Done
+  NotDone
+}
+
+enum DDCStatus {
+  Valid
+  Invalid
+}
+
+enum DDCResult {
+  Pass
+  Fail
+  None
+}
+
+enum MedicalStatus {
+  Valid
+  Invalid
+}
+
+enum DrugAlcoholStatus {
+  Done
+  NotDone
+}
+
+enum JobStatus {
+  Active
+  Inactive
+  Suspended
+  Terminated
+}
+
+enum EducationLevel {
+  Primary
+  Matric
+  Inter
+  Bachelors
+  Masters
+  None
+}
+
+enum PreviousJob {
+  PSO
+  Shell
+  Aramco
+  Other
+  None
+}
+
+enum VehicleType {
+  Tanker
+  Trailer
+  Dumper
+  Truck
+  Bus
+  None
+}
+
+enum LicenseType {
+  LTV
+  HTV
+  PSV
+  International
+}
+
+enum BloodGroup {
+  A_Positive
+  A_Negative
+  B_Positive
+  B_Negative
+  AB_Positive
+  AB_Negative
+  O_Positive
+  O_Negative
+}
+
+enum Gender {
+  Male
+  Female
+  Other
+}
+
+// Driver model
+model Driver {
+  id String @id @default(cuid())
+
+  // Personal Information
+  driverImage          String? // picture URL/base64
+  driverName           String
+  fatherName           String
+  dateOfBirth          DateTime
+  age                  Int
+  gender               Gender
+  placeOfBirth         String
+  address              String
+  maritalStatus        MaritalStatus
+  bloodGroup           BloodGroup
+  contactNo            String
+  emergencyContact     String?
+  emergencyContactName String?
+
+  // Professional Information
+  driverId        Int            @unique
+  pkCode          String
+  vehicleNo       String
+  inductionDate   DateTime
+  jobStatus       JobStatus      @default(Active)
+  education       EducationLevel
+  previousJob     PreviousJob
+  typeOfVehicle   VehicleType
+  experienceYear  Int?
+  experienceMonth Int?
+  currentJob      String
+  salary          Float?
+
+  // Identification Documents
+  cnicNo         String   @unique
+  cnicFront      String // photo URL
+  cnicBack       String // photo URL
+  cnicIssueDate  DateTime
+  cnicExpiryDate DateTime
+  cnicVerified   YesNo    @default(No)
+
+  // Driving License
+  licenseNo                 String      @unique
+  licenseIssueDate          DateTime
+  licenseExpiryDate         DateTime
+  licenseStatus             String
+  typeOfLicense             LicenseType
+  drivingSince              Int
+  licenseOnlineVerification YesNo       @default(No)
+
+  // Medical Information
+  covid19Vaccination CovidVaccinationStatus
+  firstDoseExpiry    DateTime?
+  secondDoseExpiry   DateTime?
+  boosterDose        DateTime?
+  boosterStatus      BoosterStatus?
+  medicalCheck       YesNo
+  medicalIssueDate   DateTime?
+  medicalExpiryDate  DateTime?
+  medicalStatus      MedicalStatus?
+  medicalCertificate String? // certificate URL
+
+  // DDC (Defensive Driving Course)
+  ddcNHMP           YesNo
+  ddcNHMPIssueDate  DateTime?
+  ddcNHMPExpiryDate DateTime?
+  ddcNHMPStatus     DDCStatus?
+  ddcNHMPResult     DDCResult?
+  ddcCertificate    String? // certificate URL
+
+  // Drug & Alcohol Testing
+  randomDrugAlcoholDate   DateTime?
+  randomDrugAlcoholCount  Int?
+  randomDrugAlcoholStatus DrugAlcoholStatus?
+  drugTestCertificate     String? // certificate URL
+
+  // Security & Policy
+  policeVF            YesNo
+  policeVFCertificate String? // certificate URL
+  tpplPolicy          YesNo
+  securityClearance   YesNo   @default(No)
+
+  // Languages (stored as JSON)
+  languages Json // { read: string[], write: string[], speak: string[] }
+
+  // Additional Information
+  notes        String?
+  isActive     Boolean   @default(true)
+  lastLogin    DateTime?
+  passwordHash String?
+  email        String?   @unique
+
+  // Relations
+  workExperiences DriverWorkExperience[]
+  references      DriverReference[]
+  documents       DriverDocument[]
+  violations      DriverViolation[]
+  assignments     DriverAssignment[]
+
+  // Timestamps
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  createdById String?
+  updatedById String?
+
+  // Relations to Users
+  createdBy User? @relation("CreatedBy", fields: [createdById], references: [id])
+  updatedBy User? @relation("UpdatedBy", fields: [updatedById], references: [id])
+
+  // Indexes for performance
+  @@index([driverId])
+  @@index([cnicNo])
+  @@index([licenseNo])
+  @@index([jobStatus])
+  @@index([createdAt])
+  @@map("drivers")
+}
+
+// Driver Work Experience model
+model DriverWorkExperience {
+  id               String    @id @default(cuid())
+  driverId         String
+  companyName      String
+  dateFrom         DateTime
+  dateTo           DateTime?
+  jobTill          String
+  responsibility   String
+  salary           Float?
+  reasonForLeaving String?
+
+  // Relations
+  driver Driver @relation(fields: [driverId], references: [id], onDelete: Cascade)
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([driverId])
+  @@map("driver_work_experiences")
+}
+
+// Driver Reference model
+model DriverReference {
+  id                String  @id @default(cuid())
+  driverId          String
+  referenceName     String
+  referenceAddress  String
+  referencePhone    String
+  referenceRelation String
+  referenceEmail    String?
+
+  // Relations
+  driver Driver @relation(fields: [driverId], references: [id], onDelete: Cascade)
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([driverId])
+  @@map("driver_references")
+}
+
+// Driver Document model for storing various certificates and documents
+model DriverDocument {
+  id           String    @id @default(cuid())
+  driverId     String
+  documentType String // CNIC, License, Medical, DDC, etc.
+  documentName String
+  documentUrl  String // file URL
+  issueDate    DateTime?
+  expiryDate   DateTime?
+  isVerified   Boolean   @default(false)
+  verifiedBy   String?
+  verifiedAt   DateTime?
+
+  // Relations
+  driver Driver @relation(fields: [driverId], references: [id], onDelete: Cascade)
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([driverId])
+  @@index([documentType])
+  @@map("driver_documents")
+}
+
+// Driver Violation model for tracking traffic violations and incidents
+model DriverViolation {
+  id            String   @id @default(cuid())
+  driverId      String
+  violationType String
+  violationDate DateTime
+  location      String?
+  description   String?
+  fineAmount    Float?
+  isPaid        Boolean  @default(false)
+  points        Int?
+
+  // Relations
+  driver Driver @relation(fields: [driverId], references: [id], onDelete: Cascade)
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([driverId])
+  @@index([violationDate])
+  @@map("driver_violations")
+}
+
+// Driver Assignment model for tracking driver assignments to vehicles/routes
+model DriverAssignment {
+  id             String    @id @default(cuid())
+  driverId       String
+  vehicleId      String?
+  routeId        String?
+  assignmentDate DateTime
+  endDate        DateTime?
+  status         String // Active, Completed, Cancelled
+  notes          String?
+
+  // Relations
+  driver Driver @relation(fields: [driverId], references: [id], onDelete: Cascade)
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([driverId])
+  @@index([assignmentDate])
+  @@map("driver_assignments")
+}
+
+// User model for application staff (managers, admins, etc.)
+model User {
+  id        String    @id @default(cuid())
+  clerkId   String    @unique // Clerk user ID
+  email     String    @unique
+  firstName String
+  lastName  String
+  imageUrl  String? // Profile image URL from Clerk
+  role      UserRole  @default(Admin)
+  isActive  Boolean   @default(true)
+  lastLogin DateTime?
+
+  // Relations
+  createdDrivers Driver[] @relation("CreatedBy")
+  updatedDrivers Driver[] @relation("UpdatedBy")
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([clerkId])
+  @@index([email])
+  @@index([role])
+  @@map("users")
+}
+
+// User roles enum
+enum UserRole {
+  Admin
+  Manager
+  Supervisor
+}
